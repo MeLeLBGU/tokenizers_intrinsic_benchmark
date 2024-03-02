@@ -1,4 +1,4 @@
-# tokenizers_intrinsic_becnhmark
+# tokenizers_intrinsic_benchmark
 
 Code for paper "Greed is All You Need: An Evaluation of Tokenizer Inference Methods" (Link TBA)
 
