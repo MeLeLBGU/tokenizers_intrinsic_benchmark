@@ -1,0 +1,116 @@
+{
+  "builder_name": "parquet",
+  "citation": "",
+  "config_name": "default",
+  "dataset_name": "minipile",
+  "dataset_size": 5967446087,
+  "description": "",
+  "download_checksums": {
+    "hf://datasets/JeanKaddour/minipile@18ad1b0c701eaa0de03d3cecfdd769cbc70ffbd0/data/train-00000-of-00012-6fbcb5acda05b3c0.parquet": {
+      "num_bytes": 257724274,
+      "checksum": null
+    },
+    "hf://datasets/JeanKaddour/minipile@18ad1b0c701eaa0de03d3cecfdd769cbc70ffbd0/data/train-00001-of-00012-2bb9d088068a84c9.parquet": {
+      "num_bytes": 261752766,
+      "checksum": null
+    },
+    "hf://datasets/JeanKaddour/minipile@18ad1b0c701eaa0de03d3cecfdd769cbc70ffbd0/data/train-00002-of-00012-efb6c8de04272068.parquet": {
+      "num_bytes": 258836310,
+      "checksum": null
+    },
+    "hf://datasets/JeanKaddour/minipile@18ad1b0c701eaa0de03d3cecfdd769cbc70ffbd0/data/train-00003-of-00012-47006e5a888a9324.parquet": {
+      "num_bytes": 275305669,
+      "checksum": null
+    },
+    "hf://datasets/JeanKaddour/minipile@18ad1b0c701eaa0de03d3cecfdd769cbc70ffbd0/data/train-00004-of-00012-a6a94a0207e8e96c.parquet": {
+      "num_bytes": 260388664,
+      "checksum": null
+    },
+    "hf://datasets/JeanKaddour/minipile@18ad1b0c701eaa0de03d3cecfdd769cbc70ffbd0/data/train-00005-of-00012-d255c96cd87a0aa7.parquet": {
+      "num_bytes": 263142645,
+      "checksum": null
+    },
+    "hf://datasets/JeanKaddour/minipile@18ad1b0c701eaa0de03d3cecfdd769cbc70ffbd0/data/train-00006-of-00012-89040916c30140e6.parquet": {
+      "num_bytes": 258662410,
+      "checksum": null
+    },
+    "hf://datasets/JeanKaddour/minipile@18ad1b0c701eaa0de03d3cecfdd769cbc70ffbd0/data/train-00007-of-00012-239b43e016d4ac92.parquet": {
+      "num_bytes": 256462808,
+      "checksum": null
+    },
+    "hf://datasets/JeanKaddour/minipile@18ad1b0c701eaa0de03d3cecfdd769cbc70ffbd0/data/train-00008-of-00012-3273ba93936ad8ef.parquet": {
+      "num_bytes": 260491236,
+      "checksum": null
+    },
+    "hf://datasets/JeanKaddour/minipile@18ad1b0c701eaa0de03d3cecfdd769cbc70ffbd0/data/train-00009-of-00012-0b640f47936d940a.parquet": {
+      "num_bytes": 263563688,
+      "checksum": null
+    },
+    "hf://datasets/JeanKaddour/minipile@18ad1b0c701eaa0de03d3cecfdd769cbc70ffbd0/data/train-00010-of-00012-d266658ccbfa0537.parquet": {
+      "num_bytes": 269796972,
+      "checksum": null
+    },
+    "hf://datasets/JeanKaddour/minipile@18ad1b0c701eaa0de03d3cecfdd769cbc70ffbd0/data/train-00011-of-00012-aec474909333c631.parquet": {
+      "num_bytes": 258282110,
+      "checksum": null
+    },
+    "hf://datasets/JeanKaddour/minipile@18ad1b0c701eaa0de03d3cecfdd769cbc70ffbd0/data/validation-00000-of-00001-a2192e61a091cecb.parquet": {
+      "num_bytes": 1520485,
+      "checksum": null
+    },
+    "hf://datasets/JeanKaddour/minipile@18ad1b0c701eaa0de03d3cecfdd769cbc70ffbd0/data/test-00000-of-00001-010a6231c4b54d31.parquet": {
+      "num_bytes": 31502776,
+      "checksum": null
+    }
+  },
+  "download_size": 3177432813,
+  "features": {
+    "text": {
+      "dtype": "string",
+      "_type": "Value"
+    }
+  },
+  "homepage": "",
+  "license": "",
+  "size_in_bytes": 9144878900,
+  "splits": {
+    "train": {
+      "name": "train",
+      "num_bytes": 5906108510,
+      "num_examples": 1000000,
+      "shard_lengths": [
+        93334,
+        93334,
+        83334,
+        83334,
+        93333,
+        93333,
+        93333,
+        93333,
+        93333,
+        83333,
+        93333,
+        3333
+      ],
+      "dataset_name": "minipile"
+    },
+    "validation": {
+      "name": "validation",
+      "num_bytes": 2779386,
+      "num_examples": 500,
+      "dataset_name": "minipile"
+    },
+    "test": {
+      "name": "test",
+      "num_bytes": 58558191,
+      "num_examples": 10000,
+      "dataset_name": "minipile"
+    }
+  },
+  "version": {
+    "version_str": "0.0.0",
+    "major": 0,
+    "minor": 0,
+    "patch": 0
+  }
+}
