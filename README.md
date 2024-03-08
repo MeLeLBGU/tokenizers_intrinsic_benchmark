@@ -1,6 +1,6 @@
 # tokenizers_intrinsic_benchmark
 
-Code for paper "Greed is All You Need: An Evaluation of Tokenizer Inference Methods" (Link TBA)
+Code for the paper [Greed is All You Need: An Evaluation of Tokenizer Inference Methods](https://arxiv.org/abs/2403.01289)
 
 ## Requirements
 Python packages are listed in requirements.txt.
@@ -41,6 +41,13 @@ python main.py \
 ```
 
 ## Citation
-
-TBA
-
+```
+@misc{uzan2024greed,
+      title={Greed is All You Need: An Evaluation of Tokenizer Inference Methods}, 
+      author={Omri Uzan and Craig W. Schmidt and Chris Tanner and Yuval Pinter},
+      year={2024},
+      eprint={2403.01289},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
+}
+```
