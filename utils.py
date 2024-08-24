@@ -112,7 +112,9 @@ def get_hf_pretokenizer(pretokenizer_config):
         case 'Punctuation':
             return pre_tokenizers.Punctuation(**filter_config(pretokenizer_config))
         case 'Split':
-            return pre_tokenizers.Metaspace(**filter_config(pretokenizer_config))
+            pretokenizer_config['pattern'] = pretokenizer_config['pattern']['Regex']
+            pretokenizer_config['behavior'] = pretokenizer_config['behavior'].lower()
+            return pre_tokenizers.Split(**filter_config(pretokenizer_config))
         case 'UnicodeScripts':
             return pre_tokenizers.UnicodeScripts()
         case 'Whitespace':
