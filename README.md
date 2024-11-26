@@ -42,12 +42,23 @@ python main.py \
 
 ## Citation
 ```
-@misc{uzan2024greed,
-      title={Greed is All You Need: An Evaluation of Tokenizer Inference Methods}, 
-      author={Omri Uzan and Craig W. Schmidt and Chris Tanner and Yuval Pinter},
-      year={2024},
-      eprint={2403.01289},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL}
+@inproceedings{uzan-etal-2024-greed,
+    title = "Greed is All You Need: An Evaluation of Tokenizer Inference Methods",
+    author = "Uzan, Omri  and
+      Schmidt, Craig W.  and
+      Tanner, Chris  and
+      Pinter, Yuval",
+    editor = "Ku, Lun-Wei  and
+      Martins, Andre  and
+      Srikumar, Vivek",
+    booktitle = "Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 2: Short Papers)",
+    month = aug,
+    year = "2024",
+    address = "Bangkok, Thailand",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2024.acl-short.73",
+    doi = "10.18653/v1/2024.acl-short.73",
+    pages = "813--822",
+    abstract = "While subword tokenizers such as BPE and WordPiece are typically used to build vocabularies for NLP models, the method of decoding text into a sequence of tokens from these vocabularies is often left unspecified, or ill-suited to the method in which they were constructed. We provide a controlled analysis of seven tokenizer inference methods across four different algorithms and three vocabulary sizes, performed on a novel intrinsic evaluation suite we curated for English, combining measures rooted in morphology, cognition, and information theory. We show that for the most commonly used tokenizers, greedy inference performs surprisingly well; and that SaGe, a recently-introduced contextually-informed tokenizer, outperforms all others on morphological alignment.",
 }
 ```
