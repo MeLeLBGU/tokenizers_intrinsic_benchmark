@@ -1,6 +1,6 @@
 # tokenizers_intrinsic_benchmark
 
-Code for the paper [Greed is All You Need: An Evaluation of Tokenizer Inference Methods](https://arxiv.org/abs/2403.01289](https://aclanthology.org/2024.acl-short.73/))
+Code for the paper [Greed is All You Need: An Evaluation of Tokenizer Inference Methods](https://aclanthology.org/2024.acl-short.73/)
 
 ## Requirements
 Python packages are listed in requirements.txt.
