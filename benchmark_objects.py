@@ -41,6 +41,24 @@ class BenchmarkTokenizer:
     def get_type(self):
         return self.model.type
 
+    def get_special_prefix(self):
+        wordpiece_like_types = {
+            'WordPiece', 'Sage', 'Greedy_Unigram', 'Greedy_BPE',
+            'WP_equal_like', 'WP_flota', 'WP_longest_suffix',
+        }
+        if self.type in wordpiece_like_types:
+            return "##"
+
+        pretokenizer_config = self.config.get('pre_tokenizer')
+        if pretokenizer_config:
+            configs = pretokenizer_config['pretokenizers'] if pretokenizer_config['type'] == "Sequence" \
+                else [pretokenizer_config]
+            for config in configs:
+                if config['type'] == 'Metaspace':
+                    return config.get('replacement', '▁')
+
+        return "Ġ"
+
 
 class BenchmarkNormalizer:
 

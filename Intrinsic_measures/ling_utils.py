@@ -13,7 +13,8 @@ def get_seg_coverage(x, tokenizer, key_in_df, get_gstandard,
     for _, row in x.iterrows():
         # Gold standard morphological segmentation from the dataset
         gstandard = get_gstandard(row)
-        gstandard[0] = "Ġ" + gstandard[0]
+        prefix = special if special != "##" else "Ġ"
+        gstandard[0] = prefix + gstandard[0]
         if "".join(gstandard) not in tokenizer.get_vocab():
             if special == "##":
                 gstandard = list(map(lambda tok: "##" + tok, gstandard))

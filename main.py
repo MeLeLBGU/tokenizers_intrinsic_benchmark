@@ -77,9 +77,7 @@ def main():
         paths = [path.strip() for path in vocabs_file.readlines()]
         tokenizers = [BenchmarkTokenizer(path) for path in paths]
         for path, tokenizer in tqdm(zip(paths, tokenizers)):
-            file_name = os.path.basename(path)
-            special = "##" if (file_name.startswith("wordpiece") or file_name.startswith("flota_wordpiece") or \
-                               file_name.startswith("suffix_wordpiece")) else "Ġ"
+            special = tokenizer.get_special_prefix()
             try:
                 results = eval_tokenizer(tokenizer, tokenizers, special,args['compare'])
                 if not metrics:
