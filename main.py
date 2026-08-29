@@ -19,9 +19,10 @@ def load_args():
 
 
 def run_static(tokenizer, corpus):
+    tokenized_corpus = [tokenizer.tokenize(text) for text in corpus]
     metrics = {}
-    metrics.update(static.encode_corpus(tokenizer, corpus))
-    metrics.update(static.entropy_scores(tokenizer, corpus))
+    metrics.update(static.encode_corpus(corpus, tokenized_corpus))
+    metrics.update(static.entropy_scores(tokenized_corpus))
     return metrics
 
 
