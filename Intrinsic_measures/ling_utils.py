@@ -41,5 +41,5 @@ def get_seg_coverage(x, tokenizer, key_in_df, get_gstandard,
                         fn += 1
                 fns += fn
                 length += len(y)
-    f1 = tps / (tps + 0.5 * (fps + fns))
+    f1 = tps / (tps + 0.5 * (fps + fns)) if (tps + fps + fns) > 0 else 0.0
     return {"f1": f1}
