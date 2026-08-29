@@ -108,7 +108,7 @@ class BenchmarkModel:
         model_config = copy.deepcopy(model_config)
         match model_config.pop('type'):
             case 'BPE':
-                model_config['merges'] = tuple(tuple(s.split(" ")) for s in model_config['merges'])
+                model_config['merges'] = tuple(tuple(s) if isinstance(s, list) else tuple(s.split(" ")) for s in model_config['merges'])
                 if not model_config['continuing_subword_prefix']:
                     model_config['continuing_subword_prefix'] = ""
                 if not model_config['end_of_word_suffix']:
@@ -117,7 +117,7 @@ class BenchmarkModel:
             case 'WordPiece':
                 self.backend_model = models.WordPiece(**model_config)
             case 'BPE_dropout':
-                model_config['merges'] = tuple(tuple(s.split(" ")) for s in model_config['merges'])
+                model_config['merges'] = tuple(tuple(s) if isinstance(s, list) else tuple(s.split(" ")) for s in model_config['merges'])
                 if not model_config['continuing_subword_prefix']:
                     model_config['continuing_subword_prefix'] = ""
                 if not model_config['end_of_word_suffix']:
