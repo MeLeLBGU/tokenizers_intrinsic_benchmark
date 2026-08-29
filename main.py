@@ -1,4 +1,4 @@
-import os.path, argparse
+import os.path, argparse, json
 import utils
 from tqdm import tqdm
 from Intrinsic_measures import static, ling, human_comp, compare
@@ -73,22 +73,38 @@ def main():
     names = []
     df = {"tokenizer": names}
     metrics = []
+
+    os.makedirs("checkpoints", exist_ok=True)
+
     with open(args['tokenizers'], 'r') as vocabs_file:
         paths = [path.strip() for path in vocabs_file.readlines()]
         tokenizers = [BenchmarkTokenizer(path) for path in paths]
         for path, tokenizer in tqdm(zip(paths, tokenizers)):
-            special = tokenizer.get_special_prefix()
-            try:
-                results = eval_tokenizer(tokenizer, tokenizers, special,args['compare'])
-                if not metrics:
-                    metrics = list(results.keys())
-                    for metric in metrics:
-                        df[metric] = []
-                names.append(os.path.basename(path).rstrip(".json"))
+            name = os.path.basename(path).rstrip(".json")
+            checkpoint_path = os.path.join("checkpoints", name + ".json")
+
+            if os.path.exists(checkpoint_path):
+                print(f"Skipping {name}, loading from checkpoint")
+                with open(checkpoint_path, "r", encoding="utf-8") as f:
+                    results = json.load(f)
+            else:
+                special = tokenizer.get_special_prefix()
+                try:
+                    results = eval_tokenizer(tokenizer, tokenizers, special, args['compare'])
+                except Exception as e:
+                    print(f"An error occurred on {path.strip()}: {e}")
+                    continue
+                with open(checkpoint_path, "w", encoding="utf-8") as f:
+                    json.dump(results, f)
+                print(f"Saved checkpoint for {name}")
+
+            if not metrics:
+                metrics = list(results.keys())
                 for metric in metrics:
-                    df[metric].append(results[metric])
-            except Exception as e:
-                print(f"An error occurred on {path.strip()}: {e}")
+                    df[metric] = []
+            names.append(name)
+            for metric in metrics:
+                df[metric].append(results[metric])
 
     df = pd.DataFrame(df).round(4)
     df.to_csv('output.csv', index=False)
