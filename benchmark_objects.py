@@ -41,6 +41,24 @@ class BenchmarkTokenizer:
     def get_type(self):
         return self.model.type
 
+    def get_special_prefix(self):
+        wordpiece_like_types = {
+            'WordPiece', 'Sage', 'Greedy_Unigram', 'Greedy_BPE',
+            'WP_equal_like', 'WP_flota', 'WP_longest_suffix',
+        }
+        if self.type in wordpiece_like_types:
+            return "##"
+
+        pretokenizer_config = self.config.get('pre_tokenizer')
+        if pretokenizer_config:
+            configs = pretokenizer_config['pretokenizers'] if pretokenizer_config['type'] == "Sequence" \
+                else [pretokenizer_config]
+            for config in configs:
+                if config['type'] == 'Metaspace':
+                    return config.get('replacement', '▁')
+
+        return "Ġ"
+
 
 class BenchmarkNormalizer:
 
@@ -108,7 +126,7 @@ class BenchmarkModel:
         model_config = copy.deepcopy(model_config)
         match model_config.pop('type'):
             case 'BPE':
-                model_config['merges'] = tuple(tuple(s.split(" ")) for s in model_config['merges'])
+                model_config['merges'] = tuple(tuple(s) if isinstance(s, list) else tuple(s.split(" ")) for s in model_config['merges'])
                 if not model_config['continuing_subword_prefix']:
                     model_config['continuing_subword_prefix'] = ""
                 if not model_config['end_of_word_suffix']:
@@ -117,7 +135,7 @@ class BenchmarkModel:
             case 'WordPiece':
                 self.backend_model = models.WordPiece(**model_config)
             case 'BPE_dropout':
-                model_config['merges'] = tuple(tuple(s.split(" ")) for s in model_config['merges'])
+                model_config['merges'] = tuple(tuple(s) if isinstance(s, list) else tuple(s.split(" ")) for s in model_config['merges'])
                 if not model_config['continuing_subword_prefix']:
                     model_config['continuing_subword_prefix'] = ""
                 if not model_config['end_of_word_suffix']:

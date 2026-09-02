@@ -48,8 +48,7 @@ class HFEncoding:
 def load_tokenizer(config_filepath):
     if not os.path.exists(config_filepath):
         raise FileNotFoundError(f'Missing vocab file: {config_filepath}')
-
-    with open(config_filepath, 'r') as config_file:
+    with open(config_filepath, 'r', encoding='utf-8') as config_file:
         tokenizer_config = json.load(config_file)
     return tokenizer_config
 
